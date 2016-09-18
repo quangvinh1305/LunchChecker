@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="LunchCheck" lang="en">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+
+      .container.valid .lunchTextBox { border-color: green; }
+      .container.error .lunchTextBox { border-color: red; }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="LunchCheckController" class="container {{stateClass}}">
+      <h1>Lunch Checker</h1>
+
+      <div class="form-group">
+        <input id="lunch-menu"
+          ng-model="lunchMenu"
+          type="text"
+          placeholder="list comma separated dishes you usually have for lunch"
+          class="form-control lunchTextBox">
+          <p>Note that empty space between commas are not counted.</p>
+      </div>
+      <div class="form-group">
+        <button
+          ng-click="checkLunchMenu()"
+          class="btn btn-default">Check If Too Much</button>
+      </div>
+      <div class="form-group message">
+        {{message}}
+      </div>
+    </div>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
